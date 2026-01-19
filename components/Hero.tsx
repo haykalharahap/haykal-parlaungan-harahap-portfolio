@@ -34,7 +34,7 @@ const Hero: React.FC = () => {
             }}
           >
             <img 
-              src="./profile.jpg" 
+              src="/profile.jpg" 
               alt={PERSONAL_INFO.name} 
               className="w-full h-full object-cover object-[center_5%]"
               onError={(e) => {
