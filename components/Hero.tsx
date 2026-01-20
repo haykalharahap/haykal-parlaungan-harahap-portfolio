@@ -2,12 +2,14 @@
 import React from 'react';
 import { PERSONAL_INFO } from '../constants';
 
+
 const Hero: React.FC = () => {
   const handleDownloadCV = () => {
+  
     // Simulating CV download - in a real environment this would be a direct link to a PDF
     const link = document.createElement('a');
-    link.href = '#'; // Placeholder for actual file
-    link.download = `CV_${PERSONAL_INFO.name.replace(/\s+/g, '_')}.pdf`;
+    link.href = PERSONAL_INFO.cvUrl; // Use the correct CV URL from constants
+    link.download = 'cv-haykal-harahap.pdf';
     alert('Preparing your CV download...');
     // window.print() is a common fallback for portfolio builders to "save as PDF"
     window.print();

@@ -11,7 +11,8 @@ export const PERSONAL_INFO = {
   linkedin: 'https://www.linkedin.com/in/haykal-harahap-6495b01a3/',
   github: 'https://github.com/haykalharahap',
   instagram: 'https://www.instagram.com/haykalharahap/',
-  summary: 'Front-End Developer experienced in building modern web applications using React.js, JavaScript, and REST API integration. Skilled in responsive UI, component-based architecture, debugging, and API-based workflows. Actively completing a Front-End Development Bootcamp with hands-on projects focused on authentication, protected routes, and scalable UI development.'
+  summary: 'Front-End Developer experienced in building modern web applications using React.js, JavaScript, and REST API integration. Skilled in responsive UI, component-based architecture, debugging, and API-based workflows. Actively completing a Front-End Development Bootcamp with hands-on projects focused on authentication, protected routes, and scalable UI development.',
+  cvUrl: '/cv-haykal-harahap.pdf',
 };
 
 export const SKILLS: SkillGroup[] = [
