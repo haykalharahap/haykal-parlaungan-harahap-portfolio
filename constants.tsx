@@ -40,23 +40,36 @@ export const PROJECTS: Project[] = [
       'Developed user list with pagination.',
       'Designed responsive UI using Tailwind CSS.',
       'Debugged API response issues and UI rendering problems.'
-    ]
+    ],
   },
   {
-    title: 'Responsive Landing Page – Modern UI',
-    description: 'A sleek, mobile-first landing page focused on performance and aesthetics.',
+    title: "Singgah Kita Coffee POS",
+    description:
+      "A web-based Point of Sale (POS) system built for a real coffee shop to streamline cashier operations and product management.",
     points: [
-      'Designed mobile-first landing page with Tailwind CSS.',
-      'Implemented semantic HTML structure for SEO and accessibility.',
-      'Built custom JavaScript interactions and animations.'
-    ]
-  }
+      "Designed cashier-friendly UI for fast order processing",
+      "Product & category management for daily operations",
+      "Real-time cart calculation and checkout flow",
+      "Responsive layout optimized for tablet and mobile use",
+      "Built based on real coffee shop operational workflow",
+    ],
+  },
+  {
+    title: "Responsive Landing Page – Modern UI",
+    description:
+      "A sleek, mobile-first landing page focused on performance and aesthetics.",
+    points: [
+      "Designed mobile-first landing page with Tailwind CSS",
+      "Implemented semantic HTML structure for SEO and accessibility",
+      "Built custom JavaScript interactions and animations",
+    ],
+  },
 ];
 
 export const WORK_EXPERIENCE: Experience[] = [
   {
     role: 'Operations Manager',
-    company: 'Singgah Kita Coffee',
+    company: 'CV.Singgah Kita Coffee',
     period: '2022–2025',
     points: [
       'Managed operational workflow and scheduling.',

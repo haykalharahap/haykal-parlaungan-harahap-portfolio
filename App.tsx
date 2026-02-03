@@ -11,7 +11,6 @@ const App: React.FC = () => {
     <div className="min-h-screen bg-[#0b1120] text-slate-100 selection:bg-blue-500 selection:text-white">
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-[#0b1120]/80 backdrop-blur-md border-b border-white/10">
-
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-16 items-center">
             <span className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
