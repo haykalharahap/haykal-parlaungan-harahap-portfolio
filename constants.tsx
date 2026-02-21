@@ -70,7 +70,7 @@ export const WORK_EXPERIENCE: Experience[] = [
   {
     role: 'Operations Manager',
     company: 'CV.Singgah Kita Coffee',
-    period: '2022–2025',
+    period: '2020–2025',
     points: [
       'Managed operational workflow and scheduling.',
       'Performed troubleshooting on POS systems and digital tools.',
