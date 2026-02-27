@@ -2,4 +2,4 @@
 
 Personal portfolio website built with React, TypeScript, and Tailwind CSS.
 
-🚀 Live demo: https://your-vercel-url.vercel.app
+🚀 Live demo: https: haykal-parlaungan-harahap-portfolio-two.vercel.app/

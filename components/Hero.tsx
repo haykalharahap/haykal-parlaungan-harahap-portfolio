@@ -23,7 +23,7 @@ const Hero: React.FC = () => {
                 alt={PERSONAL_INFO.name}
               />
             </div>
-            <div className="hero__image-decoration" aria-hidden="true" />
+
           </div>
 
           {/* Text Content */}

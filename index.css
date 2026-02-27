@@ -292,9 +292,20 @@ body::after {
   width: 240px;
   height: 310px;
   overflow: hidden;
-  border-radius: 16px;
-  border: 1px solid var(--border-color);
+  border-radius: 20px 20px 0 0;
   position: relative;
+}
+
+.hero__image-frame::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, var(--bg-primary));
+  pointer-events: none;
+  z-index: 1;
 }
 
 .hero__image-frame img {
@@ -308,16 +319,6 @@ body::after {
 
 .hero__image-frame:hover img {
   filter: grayscale(0%) contrast(1);
-}
-
-.hero__image-decoration {
-  position: absolute;
-  bottom: -12px;
-  right: -12px;
-  width: 80px;
-  height: 80px;
-  border: 1px solid var(--border-color);
-  border-radius: 12px;
 }
 
 .hero__text {
@@ -1135,6 +1136,7 @@ body::after {
   .hero__image-frame {
     width: 180px;
     height: 240px;
+    border-radius: 16px 16px 0 0;
   }
 
   .hero__actions {
