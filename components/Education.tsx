@@ -3,103 +3,72 @@ import { EDUCATION, CERTIFICATIONS, LANGUAGES } from '../constants';
 
 const EducationSection: React.FC = () => {
   return (
-    <section
-      id="education"
-      className="py-20 px-4 bg-transparent text-slate-200"
-    >
-      <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
-        
-        {/* Education */}
-        <div className="md:col-span-1">
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-            <i className="fas fa-graduation-cap text-blue-400"></i>
-            Education
-          </h2>
+    <section id="education" className="section">
+      <div className="container">
+        <div className="section__header section__header--center reveal">
+          <span className="section__label">Background</span>
+          <h2 className="section__title">Education & More</h2>
+          <p className="section__subtitle">
+            Academic background, certifications, and language proficiency.
+          </p>
+        </div>
 
-          <div className="space-y-8">
+        <div className="education__grid reveal-stagger">
+          {/* Education Column */}
+          <div>
+            <h3 className="edu-block__title">
+              <i className="fas fa-graduation-cap"></i> Education
+            </h3>
             {EDUCATION.map((edu, idx) => (
-              <div
-                key={idx}
-                className="border-l-2 border-blue-500/30 pl-4"
-              >
-                <div className="text-xs font-bold text-blue-400 mb-1">
-                  {edu.period}
-                </div>
-                <h3 className="font-bold text-white">
-                  {edu.degree}
-                </h3>
-                <p className="text-slate-400 text-sm">
-                  {edu.institution}
-                </p>
+              <div key={idx} className="edu-item" id={`edu-item-${idx}`}>
+                <div className="edu-item__period">{edu.period}</div>
+                <div className="edu-item__name">{edu.degree}</div>
+                <div className="edu-item__detail">{edu.institution}</div>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Certifications */}
-        <div className="md:col-span-1">
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-            <i className="fas fa-certificate text-blue-400"></i>
-            Certifications
-          </h2>
-
-          <div className="grid grid-cols-1 gap-4">
+          {/* Certifications Column */}
+          <div>
+            <h3 className="edu-block__title">
+              <i className="fas fa-certificate"></i> Certifications
+            </h3>
             {CERTIFICATIONS.map((cert, idx) => (
-              <div
-                key={idx}
-                className="flex items-center gap-4 p-4 bg-[#111827] rounded-xl border border-white/10"
-              >
-                <div className="text-2xl text-blue-400">
+              <div key={idx} className="cert-card" id={`cert-card-${idx}`}>
+                <span className="cert-card__icon">
                   <i className="fas fa-medal"></i>
-                </div>
+                </span>
                 <div>
-                  <h4 className="font-bold text-white text-sm">
-                    {cert.name}
-                  </h4>
-                  <p className="text-slate-400 text-xs">
-                    {cert.year}
-                  </p>
+                  <div className="cert-card__name">{cert.name}</div>
+                  <div className="cert-card__year">{cert.year}</div>
                 </div>
               </div>
             ))}
           </div>
-        </div>
 
-        {/* Languages */}
-        <div className="md:col-span-1">
-          <h2 className="text-2xl font-bold text-white mb-8 flex items-center gap-2">
-            <i className="fas fa-language text-blue-400"></i>
-            Languages
-          </h2>
-
-          <div className="space-y-6">
+          {/* Languages Column */}
+          <div>
+            <h3 className="edu-block__title">
+              <i className="fas fa-language"></i> Languages
+            </h3>
             {LANGUAGES.map((lang, idx) => (
-              <div key={idx}>
-                <div className="flex justify-between items-center mb-2">
-                  <span className="font-bold text-white">
-                    {lang.name}
-                  </span>
-                  <span className="text-sm text-blue-400 font-medium">
-                    {lang.level}
-                  </span>
+              <div key={idx} className="lang-item" id={`lang-item-${idx}`}>
+                <div className="lang-item__header">
+                  <span className="lang-item__name">{lang.name}</span>
+                  <span className="lang-item__level">{lang.level}</span>
                 </div>
-
-                <div className="w-full bg-slate-800 h-2 rounded-full overflow-hidden">
+                <div className="lang-item__bar">
                   <div
-                    className="bg-gradient-to-r from-blue-500 to-purple-600 h-full rounded-full"
+                    className="lang-item__fill"
                     style={{
-                      width:
-                        lang.level === 'Native'
-                          ? '100%'
-                          : '85%',
+                      width: lang.level.trim() === 'Native' ? '100%' : '85%',
                     }}
-                  ></div>
+                  />
                 </div>
               </div>
             ))}
           </div>
         </div>
-
       </div>
     </section>
   );

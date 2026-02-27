@@ -104,6 +104,7 @@ export const EDUCATION: Education[] = [
 ];
 
 export const CERTIFICATIONS: Certification[] = [
+  { name: 'Microsoft Certified - Azure Fundamentals', year: '2026' },
   { name: 'Meta - Advanced React', year: '2026' },
   { name: 'Google - IT Support', year: '2025' }
 ];

@@ -1,52 +1,136 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
 import Experience from './components/Experience';
 import EducationSection from './components/Education';
 import Footer from './components/Footer';
+import { PERSONAL_INFO } from './constants';
 
 const App: React.FC = () => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const cursorRef = useRef<HTMLDivElement>(null);
+
+  // Scroll reveal observer
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('revealed');
+          }
+        });
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+      observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
+  // Cursor glow effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (cursorRef.current) {
+        cursorRef.current.style.left = `${e.clientX}px`;
+        cursorRef.current.style.top = `${e.clientY}px`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    return () => window.removeEventListener('mousemove', handleMouseMove);
+  }, []);
+
+  // Close mobile nav on link click
+  const closeMobileNav = () => setMobileNavOpen(false);
+
+  const navLinks = [
+    { href: '#about', label: 'About' },
+    { href: '#skills', label: 'Skills' },
+    { href: '#experience', label: 'Experience' },
+    { href: '#projects', label: 'Projects' },
+    { href: '#education', label: 'Education' },
+  ];
+
   return (
-    <div className="min-h-screen bg-[#0b1120] text-slate-100 selection:bg-blue-500 selection:text-white">
+    <>
+      {/* Cursor Glow */}
+      <div ref={cursorRef} className="cursor-glow" />
+
       {/* Navbar */}
-      <nav className="sticky top-0 z-50 bg-[#0b1120]/80 backdrop-blur-md border-b border-white/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between h-16 items-center">
-            <span className="text-xl font-bold bg-gradient-to-r from-indigo-400 to-violet-400 bg-clip-text text-transparent">
-              {/* Logo / Name */}
-            </span>
+      <nav className="navbar">
+        <div className="container navbar__inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '72px' }}>
+          <a href="#" className="navbar__logo"></a>
 
-            <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-300">
-              <a href="#about" className="hover:text-indigo-400 transition-colors">About</a>
-              <a href="#skills" className="hover:text-indigo-400 transition-colors">Skills</a>
-              <a href="#experience" className="hover:text-indigo-400 transition-colors">Experience</a>
-              <a href="#projects" className="hover:text-indigo-400 transition-colors">Projects</a>
-              <a href="#education" className="hover:text-indigo-400 transition-colors">Education</a>
-            </div>
-
-            <a 
-              href="https://wa.me/62816351991" 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="px-4 py-2 bg-indigo-600 text-white rounded-full text-sm font-semibold hover:bg-indigo-700 transition-all shadow-sm flex items-center gap-2"
-            >
-              <i className="fab fa-whatsapp"></i> Hire Me
-            </a>
+          <div className="navbar__links">
+            {navLinks.map((link) => (
+              <a key={link.href} href={link.href} className="navbar__link">
+                {link.label}
+              </a>
+            ))}
           </div>
+
+          <a
+            href={PERSONAL_INFO.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="navbar__cta"
+            id="navbar-hire-btn"
+          >
+            <i className="fab fa-whatsapp"></i> Hire Me
+          </a>
+
+          <button
+            className="navbar__toggle"
+            onClick={() => setMobileNavOpen(!mobileNavOpen)}
+            aria-label="Toggle navigation menu"
+            id="navbar-toggle-btn"
+          >
+            <i className={mobileNavOpen ? 'fas fa-times' : 'fas fa-bars'}></i>
+          </button>
         </div>
       </nav>
 
+      {/* Mobile Nav */}
+      <div className={`mobile-nav ${mobileNavOpen ? 'open' : ''}`}>
+        {navLinks.map((link) => (
+          <a
+            key={link.href}
+            href={link.href}
+            className="mobile-nav__link"
+            onClick={closeMobileNav}
+          >
+            {link.label}
+          </a>
+        ))}
+        <a
+          href={PERSONAL_INFO.whatsappUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="btn btn--primary"
+          style={{ marginTop: '16px', maxWidth: '200px' }}
+        >
+          <i className="fab fa-whatsapp"></i> Hire Me
+        </a>
+      </div>
+
       <main>
         <Hero />
+        <hr className="section__divider" />
         <Skills />
+        <hr className="section__divider" />
         <Experience />
+        <hr className="section__divider" />
         <Projects />
+        <hr className="section__divider" />
         <EducationSection />
       </main>
 
       <Footer />
-    </div>
+    </>
   );
 };
 

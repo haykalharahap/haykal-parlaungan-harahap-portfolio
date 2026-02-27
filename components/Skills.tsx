@@ -2,46 +2,35 @@ import React from 'react';
 import { SKILLS } from '../constants';
 
 const Skills: React.FC = () => {
+  const getIcon = (category: string): string => {
+    switch (category) {
+      case 'Front-End': return 'fa-code';
+      case 'Tools': return 'fa-wrench';
+      default: return 'fa-layer-group';
+    }
+  };
+
   return (
-    <section
-      id="skills"
-      className="py-20 px-4 bg-transparent border-y border-white/10"
-    >
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 text-white">
-          Technical Expertise
-        </h2>
+    <section id="skills" className="section">
+      <div className="container">
+        <div className="section__header section__header--center reveal">
+          <span className="section__label">What I Work With</span>
+          <h2 className="section__title">Technical Expertise</h2>
+          <p className="section__subtitle">
+            Technologies and tools I use to bring ideas to life.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="skills__grid reveal-stagger">
           {SKILLS.map((group, idx) => (
-            <div
-              key={idx}
-              className="bg-[#111827] p-8 rounded-2xl border border-white/10 hover:border-blue-500/40 transition"
-            >
-              <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 text-white rounded-lg flex items-center justify-center mb-6">
-                <i
-                  className={`fas ${
-                    group.category === 'Front-End'
-                      ? 'fa-code'
-                      : group.category === 'Tools'
-                      ? 'fa-tools'
-                      : 'fa-layer-group'
-                  } text-xl`}
-                ></i>
+            <div key={idx} className="skill-card" id={`skill-card-${idx}`}>
+              <div className="skill-card__icon">
+                <i className={`fas ${getIcon(group.category)}`}></i>
               </div>
-
-              <h3 className="text-xl font-bold text-white mb-4">
-                {group.category}
-              </h3>
-
-              <div className="flex flex-wrap gap-2">
+              <h3 className="skill-card__title">{group.category}</h3>
+              <div className="skill-card__tags">
                 {group.items.map((skill, sIdx) => (
-                  <span
-                    key={sIdx}
-                    className="px-3 py-1 bg-slate-800 text-slate-300 rounded-md text-sm font-medium"
-                  >
-                    {skill}
-                  </span>
+                  <span key={sIdx} className="skill-tag">{skill}</span>
                 ))}
               </div>
             </div>
