@@ -41,6 +41,8 @@ export const PROJECTS: Project[] = [
       'Designed responsive UI using Tailwind CSS.',
       'Debugged API response issues and UI rendering problems.'
     ],
+    techStack: ['React.js', 'Tailwind CSS', 'REST API', 'React Router'],
+    githubUrl: 'https://github.com/haykalharahap',
   },
   {
     title: "Singgah Kita Coffee POS",
@@ -53,6 +55,8 @@ export const PROJECTS: Project[] = [
       "Responsive layout optimized for tablet and mobile use",
       "Built based on real coffee shop operational workflow",
     ],
+    techStack: ['React.js', 'JavaScript', 'CSS3', 'REST API'],
+    githubUrl: 'https://github.com/haykalharahap',
   },
   {
     title: "Responsive Landing Page – Modern UI",
@@ -63,6 +67,8 @@ export const PROJECTS: Project[] = [
       "Implemented semantic HTML structure for SEO and accessibility",
       "Built custom JavaScript interactions and animations",
     ],
+    techStack: ['HTML5', 'Tailwind CSS', 'JavaScript'],
+    githubUrl: 'https://github.com/haykalharahap',
   },
 ];
 
@@ -104,9 +110,9 @@ export const EDUCATION: Education[] = [
 ];
 
 export const CERTIFICATIONS: Certification[] = [
-  { name: 'Microsoft Certified - Azure Fundamentals', year: '2026' },
-  { name: 'Meta - Advanced React', year: '2026' },
-  { name: 'Google - IT Support', year: '2025' }
+  { name: 'Microsoft Certified - Azure Fundamentals', year: '2026', issuer: 'microsoft' },
+  { name: 'Meta - Advanced React', year: '2026', issuer: 'meta' },
+  { name: 'Google - IT Support', year: '2025', issuer: 'google' }
 ];
 
 export const LANGUAGES = [

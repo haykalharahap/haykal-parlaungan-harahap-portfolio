@@ -3,6 +3,9 @@ export interface Project {
   title: string;
   description: string;
   points: string[];
+  techStack: string[];
+  liveUrl?: string;
+  githubUrl?: string;
 }
 
 export interface Experience {
@@ -26,4 +29,5 @@ export interface Education {
 export interface Certification {
   name: string;
   year: string;
+  issuer: 'microsoft' | 'meta' | 'google';
 }

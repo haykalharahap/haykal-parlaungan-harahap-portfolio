@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import Hero from './components/Hero';
 import Skills from './components/Skills';
 import Projects from './components/Projects';
@@ -9,6 +9,8 @@ import { PERSONAL_INFO } from './constants';
 
 const App: React.FC = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('about');
+  const [showBackToTop, setShowBackToTop] = useState(false);
   const cursorRef = useRef<HTMLDivElement>(null);
 
   // Scroll reveal observer
@@ -31,6 +33,27 @@ const App: React.FC = () => {
     return () => observer.disconnect();
   }, []);
 
+  // Active section tracking + back to top visibility
+  useEffect(() => {
+    const sections = ['about', 'skills', 'experience', 'projects', 'education'];
+
+    const handleScroll = () => {
+      setShowBackToTop(window.scrollY > 600);
+
+      const scrollPos = window.scrollY + 200;
+      for (let i = sections.length - 1; i >= 0; i--) {
+        const el = document.getElementById(sections[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   // Cursor glow effect
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -46,6 +69,10 @@ const App: React.FC = () => {
 
   // Close mobile nav on link click
   const closeMobileNav = () => setMobileNavOpen(false);
+
+  const scrollToTop = useCallback(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const navLinks = [
     { href: '#about', label: 'About' },
@@ -63,11 +90,17 @@ const App: React.FC = () => {
       {/* Navbar */}
       <nav className="navbar">
         <div className="container navbar__inner" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', height: '72px' }}>
-          <a href="#" className="navbar__logo"></a>
+          <a href="#" className="navbar__logo" onClick={scrollToTop}>
+            HH<span className="navbar__logo-dot">.</span>
+          </a>
 
           <div className="navbar__links">
             {navLinks.map((link) => (
-              <a key={link.href} href={link.href} className="navbar__link">
+              <a
+                key={link.href}
+                href={link.href}
+                className={`navbar__link ${activeSection === link.href.slice(1) ? 'navbar__link--active' : ''}`}
+              >
                 {link.label}
               </a>
             ))}
@@ -130,6 +163,16 @@ const App: React.FC = () => {
       </main>
 
       <Footer />
+
+      {/* Back to Top Button */}
+      <button
+        className={`back-to-top ${showBackToTop ? 'back-to-top--visible' : ''}`}
+        onClick={scrollToTop}
+        aria-label="Back to top"
+        id="back-to-top-btn"
+      >
+        <i className="fas fa-arrow-up"></i>
+      </button>
     </>
   );
 };

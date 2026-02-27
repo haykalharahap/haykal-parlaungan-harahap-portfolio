@@ -29,6 +29,13 @@ const Projects: React.FC = () => {
                 <h3 className="project-card__title">{project.title}</h3>
                 <p className="project-card__desc">{project.description}</p>
 
+                {/* Tech Stack Badges */}
+                <div className="project-card__tech">
+                  {project.techStack.map((tech, tIdx) => (
+                    <span key={tIdx} className="tech-badge">{tech}</span>
+                  ))}
+                </div>
+
                 <div className="project-card__points">
                   {project.points.map((point, pIdx) => (
                     <div key={pIdx} className="project-card__point">
@@ -38,6 +45,32 @@ const Projects: React.FC = () => {
                       {point}
                     </div>
                   ))}
+                </div>
+
+                {/* Project Links */}
+                <div className="project-card__links">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link"
+                      id={`project-github-${idx}`}
+                    >
+                      <i className="fab fa-github"></i> Source Code
+                    </a>
+                  )}
+                  {project.liveUrl && (
+                    <a
+                      href={project.liveUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-link project-link--live"
+                      id={`project-live-${idx}`}
+                    >
+                      <i className="fas fa-external-link-alt"></i> Live Demo
+                    </a>
+                  )}
                 </div>
               </div>
             </div>
