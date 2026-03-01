@@ -15,15 +15,29 @@ const Hero: React.FC = () => {
     <section id="about" className="hero">
       <div className="container">
         <div className="hero__content">
-          {/* Profile Image */}
+          {/* Profile Image with Circular frame & rotating text */}
           <div className="hero__image-wrapper reveal">
+            {/* Rotating circular text */}
+            <svg className="hero__rotating-text" viewBox="0 0 340 340">
+              <defs>
+                <path
+                  id="circlePath"
+                  d="M 170, 170 m -150, 0 a 150,150 0 1,1 300,0 a 150,150 0 1,1 -300,0"
+                />
+              </defs>
+              <text>
+                <textPath href="#circlePath">
+                  COME ON LET'S TALK • FRONT-END DEVELOPER • LET'S BUILD TOGETHER •{' '}
+                </textPath>
+              </text>
+            </svg>
+
             <div className="hero__image-frame">
               <img
                 src="/profile.jpg"
                 alt={PERSONAL_INFO.name}
               />
             </div>
-
           </div>
 
           {/* Text Content */}
@@ -38,7 +52,7 @@ const Hero: React.FC = () => {
             </h1>
 
             <h2 className="hero__role">
-              {PERSONAL_INFO.title}
+              Software Engineer // Front-End Developer
             </h2>
 
             <p className="hero__summary">

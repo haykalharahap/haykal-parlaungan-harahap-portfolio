@@ -67,7 +67,6 @@ const App: React.FC = () => {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, []);
 
-  // Close mobile nav on link click
   const closeMobileNav = () => setMobileNavOpen(false);
 
   const scrollToTop = useCallback(() => {
@@ -82,10 +81,50 @@ const App: React.FC = () => {
     { href: '#education', label: 'Education' },
   ];
 
+  const handleDownloadCV = () => {
+    const link = document.createElement('a');
+    link.href = PERSONAL_INFO.cvUrl;
+    link.download = 'cv-haykal-harahap.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <>
       {/* Cursor Glow */}
       <div ref={cursorRef} className="cursor-glow" />
+
+      {/* Social Sidebar (Left) */}
+      <div className="social-sidebar">
+        <a
+          href={PERSONAL_INFO.instagram}
+          target="_blank"
+          rel="noreferrer"
+          className="social-sidebar__link"
+          aria-label="Instagram"
+        >
+          <i className="fab fa-instagram"></i>
+        </a>
+        <a
+          href={PERSONAL_INFO.github}
+          target="_blank"
+          rel="noreferrer"
+          className="social-sidebar__link"
+          aria-label="GitHub"
+        >
+          <i className="fab fa-github"></i>
+        </a>
+        <a
+          href={PERSONAL_INFO.linkedin}
+          target="_blank"
+          rel="noreferrer"
+          className="social-sidebar__link"
+          aria-label="LinkedIn"
+        >
+          <i className="fab fa-linkedin-in"></i>
+        </a>
+      </div>
 
       {/* Navbar */}
       <nav className="navbar">
@@ -106,15 +145,13 @@ const App: React.FC = () => {
             ))}
           </div>
 
-          <a
-            href={PERSONAL_INFO.whatsappUrl}
-            target="_blank"
-            rel="noopener noreferrer"
+          <button
+            onClick={handleDownloadCV}
             className="navbar__cta"
-            id="navbar-hire-btn"
+            id="navbar-download-cv"
           >
-            <i className="fab fa-whatsapp"></i> Hire Me
-          </a>
+            <i className="fas fa-download"></i> Download CV
+          </button>
 
           <button
             className="navbar__toggle"
@@ -139,20 +176,45 @@ const App: React.FC = () => {
             {link.label}
           </a>
         ))}
-        <a
-          href={PERSONAL_INFO.whatsappUrl}
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={handleDownloadCV}
           className="btn btn--primary"
           style={{ marginTop: '16px', maxWidth: '200px' }}
         >
-          <i className="fab fa-whatsapp"></i> Hire Me
-        </a>
+          <i className="fas fa-download"></i> Download CV
+        </button>
       </div>
 
       <main>
         <Hero />
-        <hr className="section__divider" />
+
+        {/* Brand / Client Strip */}
+        <div className="brand-strip">
+          <div className="container">
+            <p className="brand-strip__label">Technologies & Tools I Work With</p>
+            <div className="brand-strip__logos">
+              <span className="brand-strip__logo">
+                <i className="fab fa-react"></i> React
+              </span>
+              <span className="brand-strip__logo">
+                <i className="fab fa-js-square"></i> JavaScript
+              </span>
+              <span className="brand-strip__logo">
+                <i className="fab fa-html5"></i> HTML5
+              </span>
+              <span className="brand-strip__logo">
+                <i className="fab fa-css3-alt"></i> CSS3
+              </span>
+              <span className="brand-strip__logo">
+                <i className="fab fa-git-alt"></i> Git
+              </span>
+              <span className="brand-strip__logo">
+                <i className="fab fa-github"></i> GitHub
+              </span>
+            </div>
+          </div>
+        </div>
+
         <Skills />
         <hr className="section__divider" />
         <Experience />
