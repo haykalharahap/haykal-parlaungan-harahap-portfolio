@@ -5,7 +5,7 @@ const Experience: React.FC = () => {
   return (
     <section id="experience" className="section">
       <div className="container">
-        <div className="section__header section__header--center reveal">
+        <div className="section__header section__header--center reveal-left">
           <span className="section__label">Where I've Been</span>
           <h2 className="section__title">Professional Journey</h2>
           <p className="section__subtitle">

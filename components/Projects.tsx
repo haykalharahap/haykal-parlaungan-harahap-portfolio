@@ -10,7 +10,7 @@ const Projects: React.FC = () => {
   return (
     <section id="projects" className="section">
       <div className="container">
-        <div className="section__header section__header--center reveal">
+        <div className="section__header section__header--center reveal-right">
           <span className="section__label">Selected Work</span>
           <h2 className="section__title">Featured Projects</h2>
           <p className="section__subtitle">

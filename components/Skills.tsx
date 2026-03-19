@@ -13,7 +13,7 @@ const Skills: React.FC = () => {
   return (
     <section id="skills" className="section">
       <div className="container">
-        <div className="section__header section__header--center reveal">
+        <div className="section__header section__header--center reveal-scale">
           <span className="section__label">What I Work With</span>
           <h2 className="section__title">Technical Expertise</h2>
           <p className="section__subtitle">

@@ -11,6 +11,14 @@ const App: React.FC = () => {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('about');
   const [showBackToTop, setShowBackToTop] = useState(false);
+  
+  // Theme state: defaults to dark if they prefer it or have saved it, else light
+  const [darkMode, setDarkMode] = useState<boolean>(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
+  
   const cursorRef = useRef<HTMLDivElement>(null);
 
   // Scroll reveal observer
@@ -26,7 +34,7 @@ const App: React.FC = () => {
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
 
-    document.querySelectorAll('.reveal, .reveal-stagger').forEach((el) => {
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-stagger').forEach((el) => {
       observer.observe(el);
     });
 
@@ -68,6 +76,19 @@ const App: React.FC = () => {
   }, []);
 
   const closeMobileNav = () => setMobileNavOpen(false);
+
+  // Apply dark mode class
+  useEffect(() => {
+    if (darkMode) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [darkMode]);
+
+  const toggleTheme = () => setDarkMode(!darkMode);
 
   const scrollToTop = useCallback(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -151,6 +172,15 @@ const App: React.FC = () => {
             id="navbar-download-cv"
           >
             <i className="fas fa-download"></i> Download CV
+          </button>
+
+          {/* Theme Toggle Button */}
+          <button 
+            className="theme-toggle" 
+            onClick={toggleTheme}
+            aria-label="Toggle dark mode"
+          >
+            <i className={darkMode ? 'fas fa-sun' : 'fas fa-moon'}></i>
           </button>
 
           <button

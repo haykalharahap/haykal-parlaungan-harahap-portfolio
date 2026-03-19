@@ -36,7 +36,7 @@ const EducationSection: React.FC = () => {
   return (
     <section id="education" className="section">
       <div className="container">
-        <div className="section__header section__header--center reveal">
+        <div className="section__header section__header--center reveal-left">
           <span className="section__label">Background</span>
           <h2 className="section__title">Education & More</h2>
           <p className="section__subtitle">

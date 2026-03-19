@@ -32,6 +32,21 @@ export const SKILLS: SkillGroup[] = [
 
 export const PROJECTS: Project[] = [
   {
+    title: 'Singgah Kita – Food Delivery Web App',
+    description: 'A full-featured food delivery web application built as a Final Project for the dibimbing.id Front-End Bootcamp, featuring a customer-facing storefront and a complete admin dashboard.',
+    points: [
+      'Built authentication & authorization system with role-based access (Customer & Admin).',
+      'Developed admin dashboard with full CRUD for food management, order management, and user management.',
+      'Implemented real-time cart system with dynamic price calculation and checkout flow.',
+      'Integrated REST API for all data operations (foods, transactions, users, categories).',
+      'Designed responsive UI optimized for both desktop and mobile using Tailwind CSS.',
+      'Applied component-based architecture with custom hooks (useAuth, useCart) and React Router.',
+    ],
+    techStack: ['React.js', 'Tailwind CSS', 'REST API', 'React Router', 'Vite'],
+    liveUrl: 'https://singgah-id.vercel.app/',
+    githubUrl: 'https://github.com/haykalharahap',
+  },
+  {
     title: 'Front-End React Application – Authentication & User Management',
     description: 'A comprehensive user management system featuring authentication and modern web practices.',
     points: [
@@ -42,20 +57,6 @@ export const PROJECTS: Project[] = [
       'Debugged API response issues and UI rendering problems.'
     ],
     techStack: ['React.js', 'Tailwind CSS', 'REST API', 'React Router'],
-    githubUrl: 'https://github.com/haykalharahap',
-  },
-  {
-    title: "Singgah Kita Coffee POS",
-    description:
-      "A web-based Point of Sale (POS) system built for a real coffee shop to streamline cashier operations and product management.",
-    points: [
-      "Designed cashier-friendly UI for fast order processing",
-      "Product & category management for daily operations",
-      "Real-time cart calculation and checkout flow",
-      "Responsive layout optimized for tablet and mobile use",
-      "Built based on real coffee shop operational workflow",
-    ],
-    techStack: ['React.js', 'JavaScript', 'CSS3', 'REST API'],
     githubUrl: 'https://github.com/haykalharahap',
   },
   {
