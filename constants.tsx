@@ -75,24 +75,27 @@ export const PROJECTS: Project[] = [
 
 export const WORK_EXPERIENCE: Experience[] = [
   {
-    role: 'Operations Manager',
-    company: 'CV.Singgah Kita Coffee',
+    role: 'Business Operations & Sales Strategy Lead',
+    company: 'Singgah Kita Coffee',
     period: '2020–2025',
     points: [
-      'Managed operational workflow and scheduling.',
-      'Performed troubleshooting on POS systems and digital tools.',
-      'Improved inventory processes with structured digital tracking.',
-      'Lead daily coordination to improve service efficiency.'
+      'Led end-to-end business operations for an independently managed F&B business, covering customer service, sales performance, and daily workflow execution.',
+      'Developed and implemented customer acquisition, retention, and upselling strategies that contributed to revenue growth and improved repeat customer rates.',
+      'Managed customer issue resolution and service escalations, ensuring high service quality and customer satisfaction.',
+      'Oversaw POS systems, order management flow, inventory coordination, and daily sales reporting.',
+      'Analyzed customer behavior, sales trends, and operational bottlenecks to improve service efficiency and menu sales performance.',
+      'Introduced digital workflow improvements and system-based solutions that reduced downtime and improved operational continuity.',
+      'Coordinated vendor communication and business partnerships to support ongoing commercial activities.'
     ]
   },
   {
-    role: 'Paralegal & Documentation Support',
+    role: 'Legal Documentation & Compliance Support',
     company: 'Lingga & Partners Law Office',
     period: '2024–2025',
     points: [
-      'Structured written documentation and legal research.',
-      'Prepared formal reports and client communication.',
-      'Ensured accuracy and clarity in structured documents.'
+      'Managed high-accuracy documentation workflows and structured case data management.',
+      'Improved reporting structure and information retrieval processes to support legal compliance operations.',
+      'Applied analytical and logical frameworks in handling complex documentation and case workflows.'
     ]
   }
 ];
@@ -101,7 +104,7 @@ export const EDUCATION: Education[] = [
   {
     degree: 'Front-End Web Development Bootcamp',
     institution: 'dibimbing.id',
-    period: '2025–Present'
+    period: '2025–2026'
   },
   {
     degree: 'Bachelor of Law',
